@@ -13,5 +13,4 @@ jobs:
             source $BASH_ENV
             gem install bundler
       - run: ruby user_test
-          command: 
-            user_test.py
+          
