@@ -16,6 +16,6 @@ jobs:
       - run:
           name: Check current version of node
           command: node -v
-      - run: run user_test.rb
+      - run: user_test.rb
       
 
