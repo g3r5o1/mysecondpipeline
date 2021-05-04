@@ -10,6 +10,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Gemfile
-          command: bundle -v
-      - ruby/bundle-install
+          name: run tests
+          command: cmd
+            cd c:\Ruby27-x64\bin\user_test.rb
+            
