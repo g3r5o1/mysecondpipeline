@@ -15,7 +15,7 @@ jobs:
       - run: ruby user_test.rb
       - setup_remote_docker:
           docker_layer_caching: true
-       Step 4: Docker build
+      
       - run:
           name: Build and Push Docker
           command: |
