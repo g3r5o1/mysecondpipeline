@@ -15,3 +15,14 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+      - setup_remote_docker:
+          docker_layer_caching: true
+       Step 4: Docker build
+      - run:
+          name: Build and Push Docker
+          command: |
+            source venv/bin/activate
+            docker build -t poc/$IMAGE_NAME:$TAG .
+            echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
+            docker push ideaslocas/$IMAGE_NAME:$TAG
+#   Esto es para probarlo de nuevo
