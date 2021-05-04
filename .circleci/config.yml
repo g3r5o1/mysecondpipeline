@@ -5,7 +5,7 @@ jobs:
       - image: cimg/ruby:2.7.3
     steps:
       - checkout
-      -run: ruby --version
+      - run: ruby --version
       - run:
           name: Force Bundler Version
           command: |
