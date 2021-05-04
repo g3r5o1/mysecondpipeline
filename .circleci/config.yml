@@ -13,6 +13,5 @@ jobs:
             gem install bundler
       - run:
           name: Test
-          command: |
-            cmd
+          command:cmd |
             user_test.py
