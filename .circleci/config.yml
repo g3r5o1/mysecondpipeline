@@ -2,12 +2,13 @@ version: 2.0
 jobs:
   build:
     docker:
-      - image: cimg/ruby:2.7.1-node
+      - image: cimg/ruby:3.0.1
+    steps:
+      - checkout
+      - run: ruby --version
         auth:
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
-    steps:
-      - checkout
       - run:
           name: "Update Node.js and npm"
           command: |
