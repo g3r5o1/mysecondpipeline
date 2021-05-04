@@ -14,18 +14,14 @@ jobs:
 #            gem install bundler
       - run: ruby user_test.rb
       - setup_remote_docker:
-          docker_layer_caching: true
-            docker build -t poc/$IMAGE_NAME
-            echo $DOCKER_PWD | docker login -user_test $DOCKER_LOGIN --password-stdin
-            docker push ideaslocas/$IMAGE_NAME:$TAG
+          docker_layer_caching: false
+      - run: docker build -t poc/$IMAGE_NAME
+             echo $DOCKER_PWD | docker login -user_test $DOCKER_LOGIN --password-stdin
+             docker push ideaslocas/$IMAGE_NAME:$TAG
 #       Step 4: Docker build
 #      - run:
 #         name: Build and Push Docker
-<<<<<<< HEAD
 #          command:
-=======
-#          command: setup_remote_docker
->>>>>>> 28eec9f1fed3bf0ee25b48b0a04f7ee75e5e20a7
 #           source venv/bin/activate
 #            docker build -t poc/$IMAGE_NAME:$TAG .
 #            echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
