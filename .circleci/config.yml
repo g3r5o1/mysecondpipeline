@@ -15,8 +15,7 @@ jobs:
       - run: ruby user_test.rb
       - setup_remote_docker:
           docker_layer_caching: false
-      - run: docker build -tail poc/$IMAGE_NAME
+      - run: docker build -t poc/$IMAGE_NAME
              echo $DOCKER_PWD | docker login -user_test $DOCKER_LOGIN --password-stdin
              docker push ideaslocas/$IMAGE_NAME:$TAG
-
 
