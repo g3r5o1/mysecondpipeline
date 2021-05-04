@@ -9,6 +9,8 @@ jobs:
     executor: ruby/default
     steps:
       - checkout
+      - run: install-gems
+     
       - run:
           name: Which bundler?
           command: bundle -v
