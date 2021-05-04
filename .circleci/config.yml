@@ -1,21 +1,19 @@
-version: 2.1
+version: 2.0
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.7.3
+      - image: cimg/ruby:2.7.1-node
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
     steps:
       - checkout
-      - run: ruby --version
-#      - run:
-#          name: Force Bundler Version
-#          command: |
-#            echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
-#            source $BASH_ENV
-#            gem install bundler
-      - run: ruby user_test.rb
-      - setup_remote_docker:
-          docker_layer_caching: false
-      - run: docker build -t test
-#             echo $DOCKER_PWD | docker login -user_test $DOCKER_LOGIN --password-stdin
-#             docker push ideaslocas/$IMAGE_NAME:$TAG
+      - run:
+          name: "Update Node.js and npm"
+          command: |
+            curl -sSL "https://nodejs.org/dist/v11.10.0/node-v11.10.0-linux-x64.tar.xz" | sudo tar --strip-components=2 -xJ -C /usr/local/bin/ node-v11.10.0-linux-x64/bin/node
+            curl https://www.npmjs.com/install.sh | sudo bash
+      - run:
+          name: Check current version of node
+          command: node -v
 
