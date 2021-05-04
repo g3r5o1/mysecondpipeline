@@ -10,7 +10,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: run tests
-          command: cmd
-            cd c:\Ruby27-x64\bin\user_test.rb
-            
+          name: Which bundler?
+          command: bundle -v
+      - ruby/bundle-install
