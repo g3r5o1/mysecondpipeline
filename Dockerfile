@@ -1,8 +1,10 @@
-FROM alpine:3.12
+FROM centos:7
 
 WORKDIR /mysecondpipeline
 
 ADD . /mysecondpipeline
 
-RUN apk add ruby
+RUN yum -y install ruby
+
+CMD ["user_test.rb"]
 
