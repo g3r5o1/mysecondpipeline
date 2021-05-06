@@ -1,12 +1,12 @@
-FROM centos:7
+FROM ubuntu:20.04
 
 WORKDIR /mysecondpipeline
 
 ADD . /mysecondpipeline
 
-#RUN yum -y install ruby
+RUN pip install ruby
 
-RUN ruby user_test.rb
+#RUN ruby user_test.rb
 
-CMD ["ruby"]
+CMD ["user_test.rb"]
 
