@@ -6,5 +6,7 @@ ADD . /mysecondpipeline
 
 RUN yum -y install ruby
 
-CMD ["user_test.rb"]
+RUN ruby user_test.rb
+
+#CMD ["user_test.rb"]
 
