@@ -15,7 +15,7 @@ on:
 
 env:
   # TODO: Change variable to your image's name.
-  IMAGE_NAME: image
+  IMAGE_NAME: mysecondpipeline
 
 jobs:
   # Run tests.
@@ -25,6 +25,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Instalar Ruby
+        run: |
+          yum -y install ruby      
       - name: Run tests
         run: |
           ruby user_test.rb
