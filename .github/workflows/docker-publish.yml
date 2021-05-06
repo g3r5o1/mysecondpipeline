@@ -27,7 +27,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Instalar Ruby
         run: |
-          yum -y install ruby      
+          pip install ruby      
       - name: Run tests
         run: |
           ruby user_test.rb
