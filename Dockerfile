@@ -6,7 +6,7 @@ ADD . /mysecondpipeline
 
 #RUN sudo apt install ruby
 
-RUN ruby user_test.rb
+#RUN ruby user_test.rb
 
 CMD ["user_test.rb"]
 
