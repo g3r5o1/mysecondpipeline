@@ -1,2 +1,2 @@
-ruby2.7
-rubygems-integration
+ruby==2.7
+
