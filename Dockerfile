@@ -4,9 +4,9 @@ WORKDIR /mysecondpipeline
 
 ADD . /mysecondpipeline
 
-RUN apt install mongodb
+#RUN apt install mongodb
 
-RUN apt install ruby2.7
+RUN sudo apt-get install ruby2.7
 
 #RUN ruby user_test.rb
 
