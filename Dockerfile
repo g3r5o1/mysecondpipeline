@@ -4,7 +4,7 @@ WORKDIR /mysecondpipeline
 
 ADD . /mysecondpipeline
 
-RUN apt install ruby
+RUN apt install ruby2.7
 
 #RUN ruby user_test.rb
 
