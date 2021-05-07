@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: install dependencies
-      run:  apt-get install ruby
+      run:  sudo apt-get install ruby
 #    - name: run dependencies
 #      run:  flake8 --exclude=venv* --statistics
     - name: run tests
