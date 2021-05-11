@@ -1,36 +1,32 @@
-# Python CircleCI 2.0 configuration file
-version: 2
+version: 2.0
 jobs:
   build:
     docker:
-      - image: circleci/python:3.7
-
-    working_directory: ~/repo
-
+      - image: cimg/ruby:2.7.1-node
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
     steps:
-      # Step 1: obtenemos codigo fuente
       - checkout
-      # Step 2: creamos venv e instalamos dependencias
       - run:
-          name: install dependencies
+          name: "Update Node.js and npm"
           command: |
-            python3 -m venv venv
-            source venv/bin/activate
-            pip install -r requirements.txt
-      # Step 3: ejecutamos linters y flake8 y lanzamos casos de prueba
+            curl -sSL "https://nodejs.org/dist/v11.10.0/node-v11.10.0-linux-x64.tar.xz" | sudo tar --strip-components=2 -xJ -C /usr/local/bin/ node-v11.10.0-linux-x64/bin/node
+            curl https://www.npmjs.com/install.sh | sudo bash
       - run:
-          name: run tests
-          command: |
-            source venv/bin/activate
-            flake8 --exclude=venv* --statistics
-            pytest -v
-#      - setup_remote_docker:
-#          docker_layer_caching: true
+          name: Check current version of node
+          command: node -v
+      - run: 
+           name: test
+           command: ruby user_test.rb
+      - setup_remote_docker:
+          docker_layer_caching: false
       # Step 4: Docker build
-      - run:
-          name: Build and Push Docker
-          command: |
-            source venv/bin/activate
-            #docker build -t poc/$IMAGE_NAME:$TAG .
-            #echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
-            #docker push ideaslocas/$IMAGE_NAME:$TAG
+#      - run:
+#          name: Build and Push Docker
+#          command: |
+#            source venv/bin/activate
+#            docker build -t poc/$IMAGE_NAME:$TAG .
+#            echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
+#            docker push ideaslocas/$IMAGE_NAME:$TAG
+#   Esto es para probarlo de nuevo
